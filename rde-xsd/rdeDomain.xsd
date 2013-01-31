@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<schema xmlns:rdeDomain="urn:ietf:params:xml:ns:rdeDomain-1.0" xmlns:rde="urn:ietf:params:xml:ns:rde-1.0" xmlns:rgp="urn:ietf:params:xml:ns:rgp-1.0" xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.1" xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ietf:params:xml:ns:rdeDomain-1.0" elementFormDefault="qualified">
+  <!--
+  Import common element types
+  -->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:domain-1.0" schemaLocation="domain-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:secDNS-1.1" schemaLocation="secDNS-1.1.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rgp-1.0" schemaLocation="rgp-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rde-1.0" schemaLocation="rde-1.0.xsd"/>
+  <annotation>
+    <documentation>
+   Registry Data Escrow Domain provisioning schema
+ </documentation>
+  </annotation>
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <element name="contents" type="rdeDomain:contentsType" substitutionGroup="rde:contents"/>
+  <complexType name="contentsType">
+    <complexContent>
+      <extension base="rde:contentsType"/>
+    </complexContent>
+  </complexType>
+  <!--
+  Child elements of the <rde:content> object
+  -->
+  <element name="domain" type="rdeDomain:contentType" substitutionGroup="rde:content"/>
+  <complexType name="contentType">
+    <complexContent>
+      <extension base="rde:contentType">
+        <sequence>
+          <element name="name" type="eppcom:labelType"/>
+          <element name="roid" type="eppcom:roidType"/>
+          <element name="status" type="domain:statusType" maxOccurs="11"/>
+          <element name="rgpStatus" type="rgp:statusType" minOccurs="0"/>
+          <element name="registrant" type="eppcom:clIDType" minOccurs="0"/>
+          <element name="contact" type="domain:contactType" minOccurs="0" maxOccurs="unbounded"/>
+          <element name="ns" type="domain:nsType" minOccurs="0"/>
+          <element name="host" type="eppcom:labelType" minOccurs="0" maxOccurs="unbounded"/>
+          <element name="clID" type="eppcom:clIDType"/>
+          <element name="crID" type="eppcom:clIDType" minOccurs="0"/>
+          <element name="crDate" type="dateTime" minOccurs="0"/>
+          <element name="upID" type="eppcom:clIDType" minOccurs="0"/>
+          <element name="upDate" type="dateTime" minOccurs="0"/>
+          <element name="exDate" type="dateTime" minOccurs="0"/>
+          <element name="deDate" type="dateTime" minOccurs="0"/>
+          <element name="authInfo" type="domain:authInfoType" minOccurs="0"/>
+          <element name="secDNS" type="secDNS:dsOrKeyType" minOccurs="0"/>
+          <element name="trnData" type="rdeDomain:transferDataType" minOccurs="0"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="transferDataType">
+    <sequence>
+      <element name="trStatus" type="eppcom:trStatusType"/>
+      <element name="reID" type="eppcom:clIDType"/>
+      <element name="reDate" type="dateTime"/>
+      <element name="acID" type="eppcom:clIDType"/>
+      <element name="acDate" type="dateTime"/>
+      <element name="exDate" type="dateTime" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <!--
+  Child elements of the <rde:delete> object
+  -->
+  <element name="delete" type="rdeDomain:deleteType" substitutionGroup="rde:delete"/>
+  <complexType name="deleteType">
+    <complexContent>
+      <extension base="rde:deleteType">
+        <sequence>
+          <element name="name" type="eppcom:labelType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <!--
+  End of schema.
+  -->
+</schema>
