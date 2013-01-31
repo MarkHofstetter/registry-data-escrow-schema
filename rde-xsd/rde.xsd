@@ -1,10 +1,16 @@
-<?xml version="1.0"?>
-<schema xmlns:rde="urn:ietf:params:xml:ns:rde-1.0" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ietf:params:xml:ns:rde-1.0" elementFormDefault="qualified">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:rde-1.0"
+        xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
   <annotation>
     <documentation>
-Registry Data Escrow schema
- </documentation>
+       Registry Data Escrow schema
+    </documentation>
   </annotation>
+
   <!--
   Root element
   -->
@@ -69,7 +75,7 @@ Registry Data Escrow schema
     </restriction>
   </simpleType>
   <!--
- Identifies available object services.
+    Identifies available object services.
   -->
   <complexType name="rdeMenuType">
     <sequence>
@@ -92,7 +98,7 @@ Registry Data Escrow schema
     </sequence>
   </complexType>
   <!--
- A RDE version number is a dotted pair of decimal numbers.
+    A RDE version number is a dotted pair of decimal numbers.
   -->
   <simpleType name="versionType">
     <restriction base="token">
@@ -104,3 +110,4 @@ Registry Data Escrow schema
   End of schema.
   -->
 </schema>
+
